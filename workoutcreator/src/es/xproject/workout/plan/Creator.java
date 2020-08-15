@@ -22,7 +22,6 @@ import org.apache.log4j.Logger;
 import es.xproject.workout.base.Constants;
 import es.xproject.workout.base.Step;
 import es.xproject.workout.base.Workout;
-import es.xproject.workout.handler.WorkoutHandler;
 
 public class Creator {
 

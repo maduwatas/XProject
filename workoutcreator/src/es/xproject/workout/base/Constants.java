@@ -45,20 +45,19 @@ public class Constants {
 	public static final Integer LEVEL_NEUROMUSCULAR = 1000;
 
 	/*
-	<color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name="colorWorkout">#B9ECA618</color>
-    <color name="colorWhite">#FFFFFF</color>
-    <color name="colorSilver">#EEEBEB</color>
-    <color name="colorRecovery">#00BCD4</color>
-    <color name="colorEndurance">#CDDC39</color>
-    <color name="colorTempo">#DCC139</color>
-    <color name="colorSweetSpot">#FFC107</color>
-    <color name="colorThresdhold">#FF9800</color>
-    <color name="colorWOmax">#DDEB8038</color>
-    <color name="colorAnaerobic">#F44336</color>
-    <color name="colorNeuromuscular">#D3FF0000</color>
-    <color name="timer_circle">#2ebfca</color>
-	*/
+	 * <color name="colorPrimary">#008577</color> <color
+	 * name="colorPrimaryDark">#00574B</color> <color
+	 * name="colorAccent">#D81B60</color> <color
+	 * name="colorWorkout">#B9ECA618</color> <color
+	 * name="colorWhite">#FFFFFF</color> <color name="colorSilver">#EEEBEB</color>
+	 * <color name="colorRecovery">#00BCD4</color> <color
+	 * name="colorEndurance">#CDDC39</color> <color
+	 * name="colorTempo">#DCC139</color> <color
+	 * name="colorSweetSpot">#FFC107</color> <color
+	 * name="colorThresdhold">#FF9800</color> <color
+	 * name="colorWOmax">#DDEB8038</color> <color
+	 * name="colorAnaerobic">#F44336</color> <color
+	 * name="colorNeuromuscular">#D3FF0000</color> <color
+	 * name="timer_circle">#2ebfca</color>
+	 */
 }

@@ -230,24 +230,23 @@ public class WorkoutHandler implements Serializable {
 		return new PaintListener() {
 			public void paintControl(PaintEvent e) {
 
-				
 				e.gc.setForeground(Display.getDefault().getSystemColor(SWT.COLOR_WHITE));
 				e.gc.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_WHITE));
-				Rectangle rect = new Rectangle(0, 0,shell.getClientArea().width,shell.getClientArea().height);
+				Rectangle rect = new Rectangle(0, 0, shell.getClientArea().width, shell.getClientArea().height);
 				e.gc.fillRectangle(rect);
-			
+
 				e.gc.setForeground(Display.getDefault().getSystemColor(SWT.COLOR_DARK_GRAY));
-				
-				
-				Font font = new Font(shell.getDisplay(),"Arial",12,SWT.BOLD | SWT.ITALIC);
+
+				Font font = new Font(shell.getDisplay(), "Arial", 12, SWT.BOLD | SWT.ITALIC);
 				// ...
 				e.gc.setFont(font);
-				e.gc.drawText(wo.getName(),10,10);
-				
-				font = new Font(shell.getDisplay(),"Arial",10,SWT.DEFAULT);
+				e.gc.drawText(wo.getName(), 10, 10);
+
+				font = new Font(shell.getDisplay(), "Arial", 10, SWT.DEFAULT);
 				e.gc.setFont(font);
-				e.gc.drawText("Duración: " + totalLength/60 + " minutos en " + totalIntervals + " intervalos" ,10,30);
-				
+				e.gc.drawText("Duración: " + totalLength / 60 + " minutos en " + totalIntervals + " intervalos", 10,
+						30);
+
 				// ...
 				font.dispose();
 				// e.gc.setBackground(Display.getDefault().getSystemColor(SWT.TRANSPARENT));
@@ -262,7 +261,6 @@ public class WorkoutHandler implements Serializable {
 					}
 				}
 
-				
 				for (Step step : paintableSteps) {
 
 					Double horizontalTime = step.getTime() * hMeter;
@@ -277,8 +275,8 @@ public class WorkoutHandler implements Serializable {
 							Double hmRamp = 60 * hMeter;
 							Double vmRamp = dh - (powerRamp * vMeter);
 
-							rect = new Rectangle(timeline, vmRamp.intValue(),
-									timeline + vmRamp.intValue(), dh.intValue());
+							rect = new Rectangle(timeline, vmRamp.intValue(), timeline + vmRamp.intValue(),
+									dh.intValue());
 
 							Color color = selectColorByInterval(powerRamp * userTuneUp);
 
@@ -306,42 +304,40 @@ public class WorkoutHandler implements Serializable {
 
 						if (step.getRaisePower() > 0 && step.getRaisePower() != step.getPower()) {
 
-							
-							// vm es la medida de pontencia inicial y raise la final 
+							// vm es la medida de pontencia inicial y raise la final
 							/*
 							 * GC.drawPolyline(int[] pointArray); Draw a series of interconnecting lines
 							 * with the int[] representing x and y positions for consecutive points. The
 							 * statement: gc.drawPolyline(new int[] { 25,5,45,45,5,45 }); draws a line from
 							 * 25,5 to 45,45 and then from 45,45 onto 5,45.
 							 */
-						   /* raise = dh - (step.getRaisePower() * vMeter);
+							/*
+							 * raise = dh - (step.getRaisePower() * vMeter);
+							 * 
+							 * Path path = new Path(); path.moveTo(timeline, vm.intValue());
+							 * path.lineTo(timeline + hm.intValue(), raise.intValue()); path.lineTo(timeline
+							 * + hm.intValue(), dh.intValue()); path.lineTo(timeline, dh.intValue());
+							 * path.lineTo(timeline, vm.intValue()); path.close(); canvas.drawPath(path,
+							 * paint);
+							 * 
+							 * 
+							 * 
+							 * int[] pointArray = new int[] { timeline, dh.intValue(), // base timeline ,
+							 * vm.intValue(), // pico superior izquierdo timeline + hm.intValue(),
+							 * raise.intValue(), // pico superior derecho timeline + hm.intValue(),
+							 * dh.intValue(), // pico inferior derecho timeline, dh.intValue() }; // vuelta
+							 * al principio
+							 */
 
-                            Path path = new Path();
-                            path.moveTo(timeline, vm.intValue());
-                            path.lineTo(timeline + hm.intValue(), raise.intValue());
-                            path.lineTo(timeline + hm.intValue(), dh.intValue());
-                            path.lineTo(timeline, dh.intValue());
-                            path.lineTo(timeline, vm.intValue());
-                            path.close();
-                            canvas.drawPath(path, paint);
-							
-							
-							
-							int[] pointArray = new int[] { timeline, dh.intValue(), // base
-									timeline , vm.intValue(), // pico superior izquierdo
-									timeline + hm.intValue(), raise.intValue(), // pico superior derecho
-									timeline + hm.intValue(), dh.intValue(), // pico inferior derecho
-									timeline, dh.intValue() }; // vuelta al principio
-							*/
-							
 							raise = step.getRaisePower() * vMeter;
-							
-							int[] pointArray = new int[] { 
-									 timeline,  dh.intValue(), // base
-									 timeline ,   dh.intValue() - verticalPower.intValue(), // pico superior izquierdo
-									 timeline +  horizontalTime.intValue(),  dh.intValue() - raise.intValue(), // pico superior derecho
-									 timeline +  horizontalTime.intValue(),  dh.intValue() , // pico inferior derecho
-									timeline,  dh.intValue() }; // vuelta al principio
+
+							int[] pointArray = new int[] { timeline, dh.intValue(), // base
+									timeline, dh.intValue() - verticalPower.intValue(), // pico superior izquierdo
+									timeline + horizontalTime.intValue(), dh.intValue() - raise.intValue(), // pico
+																											// superior
+																											// derecho
+									timeline + horizontalTime.intValue(), dh.intValue(), // pico inferior derecho
+									timeline, dh.intValue() }; // vuelta al principio
 							log.debug(String.format("draw rectangle: %d %d %d %d", timeline, verticalPower.intValue(),
 									horizontalTime.intValue(), dh.intValue()));
 							e.gc.fillPolygon(pointArray);
@@ -359,10 +355,9 @@ public class WorkoutHandler implements Serializable {
 							 */
 
 							Double recWith = step.getTime() * hMeter;
-							Double recHeight = - step.getPower() * vMeter;
+							Double recHeight = -step.getPower() * vMeter;
 
-							rect = new Rectangle(timeline, dh.intValue(), recWith.intValue(),
-									recHeight.intValue());
+							rect = new Rectangle(timeline, dh.intValue(), recWith.intValue(), recHeight.intValue());
 
 							log.debug(String.format("draw rectangle: %d %d %d %d", timeline, verticalPower.intValue(),
 									recWith.intValue(), recHeight.intValue()));
@@ -379,14 +374,10 @@ public class WorkoutHandler implements Serializable {
 
 				e.gc.setForeground(Display.getDefault().getSystemColor(SWT.COLOR_GRAY));
 				e.gc.drawLine(0, Float.valueOf(vLine).intValue(), timeline, Float.valueOf(vLine).intValue());
-				
-				
-			
+
 			}
 		};
 	}
-	
-	
 
 	private int getTimeRaised(Step step, Integer raisePower) {
 

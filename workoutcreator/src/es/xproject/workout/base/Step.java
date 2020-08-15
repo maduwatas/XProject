@@ -15,39 +15,43 @@ public class Step extends WorkElement {
 	boolean rampLoop;
 	Integer repeat;
 	ArrayList<Step> steps;
-	
+
 	public void addStep(Step step) {
-		if (steps==null)
+		if (steps == null)
 			steps = new ArrayList<Step>();
 		steps.add(step);
 	}
-	
+
 	public Step() {
-		init(0,0,0,0);
+		init(0, 0, 0, 0);
 	}
-	
+
 	public Step(Integer power, Integer recovery, Integer duration) {
-		init(power,0,recovery,duration);
+		init(power, 0, recovery, duration);
 	}
+
 	public Step(Integer power, Integer raisePower, Integer recovery, Integer duration) {
-		init(power,raisePower,recovery,duration);
+		init(power, raisePower, recovery, duration);
 	}
+
 	private void init(Integer power, int raisePower, Integer recovery, Integer duration) {
-		this.power=power;
+		this.power = power;
 		this.repeat = 1;
-		this.raisePower=raisePower;
-		this.recoveryTime=recovery;
-		this.time=duration;
-		this.recoveryPower=Workout.DEFAULT_RECOVERY;
-		
+		this.raisePower = raisePower;
+		this.recoveryTime = recovery;
+		this.time = duration;
+		this.recoveryPower = Workout.DEFAULT_RECOVERY;
+
 	}
+
 	public Integer getPower() {
 		return power;
 	}
+
 	public void setPower(Integer power) {
 		this.power = power;
 	}
-	
+
 	public Integer getRecoveryTime() {
 		return recoveryTime;
 	}
@@ -59,12 +63,15 @@ public class Step extends WorkElement {
 	public Integer getTime() {
 		return time;
 	}
+
 	public void setTime(Integer duration) {
 		this.time = duration;
 	}
+
 	public ArrayList<Step> getSteps() {
 		return steps;
 	}
+
 	public void setSteps(ArrayList<Step> steps) {
 		this.steps = steps;
 	}
@@ -101,8 +108,4 @@ public class Step extends WorkElement {
 		this.repeat = repeat;
 	}
 
-	
-	
-	
-	
 }

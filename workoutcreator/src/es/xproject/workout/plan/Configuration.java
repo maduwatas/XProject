@@ -20,6 +20,7 @@ public class Configuration {
 	//	createSpeciality();
 	}
 
+	
 	private static void createBase() {
 		baseWorkouts = new HashMap<Integer, ArrayList<Workout>>();
 

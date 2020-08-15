@@ -45,16 +45,15 @@ public class ShowWorkout {
 
 		s = new Shell(d);
 		s.setText("Visualización de workouts");
-		
+
 		s.setLayout(new FillLayout());
-		
-		
+
 		// createContents();
 		createContents();
 		createMenu();
-		
+
 		s.open();
-		
+
 		while (!s.isDisposed()) {
 			if (!d.readAndDispatch()) {
 				d.sleep();
@@ -62,8 +61,6 @@ public class ShowWorkout {
 		}
 		d.dispose();
 	}
-	
-	
 
 	private void createMenu() {
 
@@ -91,8 +88,7 @@ public class ShowWorkout {
 				fd.open();
 				file = fd.getFileName();
 				createContents();
-					
-				
+
 			}
 
 			public void widgetDefaultSelected(SelectionEvent event) {
@@ -100,7 +96,6 @@ public class ShowWorkout {
 		}
 
 		openItem.addSelectionListener(new Open());
-		
 
 		exitItem.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -113,9 +108,7 @@ public class ShowWorkout {
 			}
 		});
 		s.setMenuBar(m);
-		
 
-	
 	}
 
 	/**
@@ -125,18 +118,16 @@ public class ShowWorkout {
 	 *            the main window
 	 */
 	private void createContents() {
-		
+
 		WorkoutHandler handler = new WorkoutHandler(file, ftp);
 		handler.loadWorkout();
-		if (canvas!=null)
+		if (canvas != null)
 			canvas.dispose();
 		canvas = new Canvas(s, SWT.NONE);
 		canvas.addPaintListener(handler.getPaintListener(s));
 		canvas.redraw();
 		s.layout();
-		
-		
-		
+
 	}
 
 	/**

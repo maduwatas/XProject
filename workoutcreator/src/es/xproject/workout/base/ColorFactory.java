@@ -18,7 +18,6 @@ public class ColorFactory {
 		return instance;
 	}
 
-	
 	public Color getColor(int color) {
 		Color result = null;
 		Display d = Display.getDefault();
@@ -34,7 +33,7 @@ public class ColorFactory {
 			result = new Color(d, 255, 177, 0);
 			break;
 		case Z4:
-			result = new Color(d,253, 132, 3);
+			result = new Color(d, 253, 132, 3);
 			break;
 		case Z5:
 			result = new Color(d, 253, 87, 3);
@@ -46,7 +45,7 @@ public class ColorFactory {
 			result = new Color(d, 250, 10, 10);
 			break;
 		case Z8:
-			result = new Color(d,  178, 5, 5 );
+			result = new Color(d, 178, 5, 5);
 			break;
 		default:
 			d.getSystemColor(color);

@@ -33,7 +33,7 @@ public class Workout {
 	private String name;
 	private ArrayList<Step> steps;
 	private boolean rest = false;
-	
+
 	private Warn warnElement;
 	private Main mainElement;
 	private Cold coldElement;
@@ -60,8 +60,6 @@ public class Workout {
 		thresholdWarn.addStep(new Step(115, 60, 60));
 		thresholdWarn.addStep(new Step(115, 3 * 60, 90));
 	}
-	
-	
 
 	public Workout(String name, int intervals, int intervalDuration, int recovery, int power) {
 		init(name, intervals, intervalDuration, recovery, power, 0);
@@ -90,31 +88,24 @@ public class Workout {
 		// calentamiento distinto
 		Workout wo = new Workout();
 		if (power > 120) {
-			
+
 			wo.addStep(new Step(40, 70, 0, 10 * 60));
 			wo.addStep(new Step(115, 45, 45));
-			wo.addStep(new Step(115, 2*60, 60));
+			wo.addStep(new Step(115, 2 * 60, 60));
 			wo.addStep(new Step(power, 20, 10));
-			wo.addStep(new Step(power, 3*60, 20));
-		}
-		else if (power > 100) {
+			wo.addStep(new Step(power, 3 * 60, 20));
+		} else if (power > 100) {
 			return thresholdWarn;
-		}
-		else if (power >80) {
-			
+		} else if (power > 80) {
+
 			wo.addStep(new Step(50, 0, 180));
 			wo.addStep(new Step(65, 0, 180));
 			wo.addStep(new Step(75, 0, 180));
 			wo.addStep(new Step(85, 300, 180));
+		} else {
+			wo.addStep(new Step(40, Double.valueOf(power * 0.9).intValue(), 2 * 60, 6 * 60));
+			wo.addStep(new Step(power, 90, 3 * 60));
 		}
-		else {
-			wo.addStep(new Step(40, Double.valueOf(power*0.9).intValue(), 2*60, 6*60));
-			wo.addStep(new Step(power, 90, 3*60));
-		}
-		
-		
-		
-	
 
 		return wo;
 	}
@@ -144,7 +135,6 @@ public class Workout {
 		return tss;
 	}
 
-	
 	public Workout getWarn() {
 		return warn;
 	}
@@ -301,7 +291,7 @@ public class Workout {
 
 			ArrayList<Step> paintableSteps = new ArrayList<Step>();
 
-			if (steps!=null) {
+			if (steps != null) {
 				for (Step step : steps) {
 					if (!splitIntervalApply(paintableSteps, step)) {
 						paintableSteps.add(step);
@@ -385,23 +375,23 @@ public class Workout {
 	}
 
 	public void setType(String type) {
-		this.type=type;
-		
+		this.type = type;
+
 	}
 
 	public void setWarnElement(Warn warnElement) {
 		this.warnElement = warnElement;
-		
+
 	}
-	
+
 	public void setColdElement(Cold coldElement) {
 		this.coldElement = coldElement;
-		
+
 	}
-	
+
 	public void setMainElement(Main mainElement) {
 		this.mainElement = mainElement;
-		
+
 	}
 
 	public Warn getWarnElement() {
