@@ -2,6 +2,7 @@ package es.xproject.workout.base;
 
 public class Cold extends WorkElement {
 
+	
 	/**
 	 * 
 	 */
