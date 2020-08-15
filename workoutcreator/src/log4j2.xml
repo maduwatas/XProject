@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" status="info">
+	
+	<Properties>
+		<Property name="filepath">${sys:catalina.base}/logs</Property>
+	</Properties>
+	
+	<!-- Appenders -->
+	<Appenders>
+	
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+			<!--  <param name="Target" value="System.out" /> -->
+			<layout class="org.apache.log4j.PatternLayout">
+				<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+			</layout>
+			
+		</Console>
+
+	
+		
+	</Appenders>
+
+	<Loggers>
+		<Root level="info">
+			 <AppenderRef ref="Console" /> 
+		</Root>
+
+		<logger name="es.xproject.workout" level="TRACE" />
+	
+		
+	
+		
+
+	</Loggers>
+</log4j:configuration>
