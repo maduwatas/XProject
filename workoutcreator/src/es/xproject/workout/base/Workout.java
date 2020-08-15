@@ -231,6 +231,7 @@ public class Workout {
 		return result;
 	}
 
+	
 	public static Double selectUpperPowerLimit(double percent) {
 
 		if (percent < LEVEL_RECOVERY)
