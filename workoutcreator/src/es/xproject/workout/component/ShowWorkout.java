@@ -73,7 +73,7 @@ public class ShowWorkout {
 		final MenuItem openItem = new MenuItem(filemenu, SWT.PUSH);
 		openItem.setText("&Open\tCTRL+O");
 		openItem.setAccelerator(SWT.CTRL + 'O');
-		final MenuItem separator = new MenuItem(filemenu, SWT.SEPARATOR);
+		//final MenuItem separator = new MenuItem(filemenu, SWT.SEPARATOR);
 		final MenuItem exitItem = new MenuItem(filemenu, SWT.PUSH);
 		exitItem.setText("E&xit");
 
