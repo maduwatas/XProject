@@ -45,7 +45,7 @@ public class XmlPullParserWorkoutHandler {
 
 			WorkElement openElement = null;
 			Step openStep = null;
-		
+
 			int stepLevel = 0;
 
 			int eventType = parser.getEventType();

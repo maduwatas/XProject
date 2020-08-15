@@ -37,7 +37,7 @@ public class Creator {
 	private static StringBuffer planBuffer = null;
 
 	private static final Logger log = Logger.getLogger(Creator.class);
-	
+
 	private static SimpleDateFormat calendarFormat = new SimpleDateFormat("yyyyMMdd");
 
 	public static void main(String[] args) throws Exception {
@@ -178,12 +178,10 @@ public class Creator {
 
 	private static void writeWorkout(Workout wo, int mWeek) {
 		BufferedWriter writer = null;
-		
-		
-		
+
 		try {
 			log.debug("writeWorkout " + wo.getName());
-			
+
 			if (wo.getName() == null)
 				wo.setName("Hamaca");
 
