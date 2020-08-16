@@ -26,34 +26,34 @@ public class Configuration {
 		ArrayList<Workout> workouts = new ArrayList<Workout>();
 
 		workouts.add(WorkoutFactory.getInstance().get(WorkoutFactory.RAMP_TEST));
-		workouts.add(new Workout("Vamos", 3, 12 * 60, 3 * 60, 88, 91));
-		workouts.add(new Workout("Diez", 5, 10 * 60, 5 * 60, 88, 91));
+		workouts.add(new Workout("Vamos", 3, 12 * 60, 3 * 60, 84, 89));
+		workouts.add(new Workout("Diez", 5, 10 * 60, 5 * 60, 85, 89));
 		workouts.add(WorkoutFactory.getInstance().get(WorkoutFactory.PETTIT));
 		workouts.add(new Workout(true));
-		workouts.add(new Workout("Tatorri", 3, 20 * 60, 10 * 60, 88, 91));
-		workouts.add(new Workout("Supertempo", 3, 25 * 60, 5 * 60, 85));
+		workouts.add(new Workout("Tatorri", 3, 20 * 60, 10 * 60, 85, 91));
+		workouts.add(new Workout("Supertempo", 3, 25 * 60, 5 * 60, 82));
 
 		baseWorkouts.put(1, workouts);
 
 		workouts = new ArrayList<Workout>();
 
 		workouts.add(new Workout(true));
-		workouts.add(new Workout("Spinner", 7, 6 * 60, 1 * 60, 88, 94));
+		workouts.add(new Workout("Spinner", 7, 6 * 60, 1 * 60, 86, 91));
 		workouts.add(WorkoutFactory.getInstance().get(WorkoutFactory.PETTIT));
-		workouts.add(new Workout("Bandobani", 5, 12 * 60, 4 * 60, 88, 92));
+		workouts.add(new Workout("Bandobani", 5, 12 * 60, 4 * 60, 86, 91));
 		workouts.add(new Workout(true));
 
 		// base es new Workout(60,3,30*60,5*60,85)
 		workouts.add(WorkoutFactory.getInstance().get(WorkoutFactory.WRIGHT_PEAK));
 
-		workouts.add(WorkoutFactory.getInstance().buildLowRecovery("Mandoban", 3, 20 * 60, 15 * 60, 85, 92, 70));
+		workouts.add(WorkoutFactory.getInstance().buildLowRecovery("Mandoban", 3, 20 * 60, 15 * 60, 82, 91, 68));
 
 		baseWorkouts.put(2, workouts);
 
 		workouts = new ArrayList<Workout>();
 
 		workouts.add(new Workout(true));
-		workouts.add(new Workout("12V", 5, 12 * 60, 4 * 60, 88, 94));
+		workouts.add(new Workout("12V", 5, 12 * 60, 4 * 60, 87, 93));
 		workouts.add(WorkoutFactory.getInstance().get(WorkoutFactory.PETTIT));
 		// base es new Workout(60,3,20*60,5*60,85)
 		workouts.add(WorkoutFactory.getInstance().get(WorkoutFactory.CARRILLON));
@@ -63,23 +63,23 @@ public class Configuration {
 		// base es new Workout(60,3,30*60,5*60,85)
 		workouts.add(WorkoutFactory.getInstance().get(WorkoutFactory.JUNEAU));
 
-		workouts.add(WorkoutFactory.getInstance().buildLowRecovery("Fully", 3, 20 * 60, 15 * 60, 85, 92, 65));
+		workouts.add(WorkoutFactory.getInstance().buildLowRecovery("Fully", 3, 20 * 60, 15 * 60, 85, 91, 65));
 
 		baseWorkouts.put(3, workouts);
 
 		workouts = new ArrayList<Workout>();
 
 		workouts.add(new Workout(true));
-		workouts.add(new Workout("Sevenup", 7, 6 * 60, 1 * 60, 88, 94));
+		workouts.add(new Workout("Sevenup", 7, 7 * 60, 1 * 60, 88, 94));
 
 		workouts.add(WorkoutFactory.getInstance().get(WorkoutFactory.PETTIT));
-		workouts.add(new Workout("Runedia", 5, 12 * 60, 4 * 60, 88, 92));
+		workouts.add(new Workout("Runedia", 5, 12 * 60, 4 * 60, 86, 94));
 		workouts.add(new Workout(true));
 
 		// base es new Workout(60,3,30*60,5*60,85)
 		workouts.add(WorkoutFactory.getInstance().get(WorkoutFactory.WRIGHT_PEAK));
 
-		workouts.add(WorkoutFactory.getInstance().buildLowRecovery("Quincetto", 3, 15 * 60, 15 * 60, 85, 92, 67));
+		workouts.add(WorkoutFactory.getInstance().buildLowRecovery("Quincetto", 3, 15 * 60, 15 * 60, 85, 92, 68));
 		baseWorkouts.put(4, workouts);
 
 		workouts = new ArrayList<Workout>();
