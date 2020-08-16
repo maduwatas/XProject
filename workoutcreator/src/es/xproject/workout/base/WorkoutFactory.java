@@ -94,7 +94,7 @@ public class WorkoutFactory {
 
 		mMap.put(BAYS, buildTempoWithSprint(BAYS, 5, 20 * 60, 0, 70, 75, 20));
 		mMap.put(CHIRRI, buildLadder(CHIRRI, 8, 88, 6 * 60));
-		mMap.put(CAMARA, carrillon(new Workout(CAMARA, 1, 24 * 60, 0, 80), 24 * 60, 4, 2 * 60));
+		mMap.put(CAMARA, carrillon(new Workout(CAMARA, 1, 24 * 60, 0, 80), 24 * 60, 4, 3 * 60));
 		mMap.put(CARRILLON, carrillon(new Workout(CARRILLON, 3, 20 * 60, 5 * 60, 85), 20 * 60, 2, 30));
 		mMap.put(PALISADE, carrillon(new Workout(PALISADE, 5, 9 * 60, 6 * 60, 95), 9 * 60, 2, 0));
 		mMap.put(MCADIE, carrillon(new Workout(MCADIE, 4, 12 * 60, 6 * 60, 95), 12 * 60, 2, 30));
