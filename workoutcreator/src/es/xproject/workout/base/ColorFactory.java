@@ -20,7 +20,7 @@ public class ColorFactory {
 
 	public Color getColor(int color) {
 		Color result = null;
-		Display d = Display.getDefault();
+		Display d = Display.getDefault(); 
 
 		switch (color) {
 		case Z1:
