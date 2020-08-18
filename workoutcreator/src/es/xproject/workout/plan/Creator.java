@@ -140,11 +140,27 @@ public class Creator {
 			week++;
 		}
 
+		for (int mWeek = 1; mWeek <= 2; mWeek++) {
+			ArrayList<Workout> conf = Configuration.getSpecialityWorkouts().get(mWeek);
+
+			if (day == null) {
+				for (int i = 1; i <= 8; i++) {
+					generateByDay(conf, i, week);
+				}
+			} else {
+				generateByDay(conf, Integer.valueOf(day), week);
+			}
+			week++;
+		}
+		
+		
+		
 		for (Workout wo : Configuration.getExtra()) {
 			writeWorkout(wo, 0);
 		}
 	}
 
+	
 	private static void baseWorkout() {
 
 		for (int mWeek = 1; mWeek <= 12; mWeek++) {

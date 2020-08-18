@@ -17,6 +17,7 @@ public class WorkoutFactory {
 	public static final String JUNEAU = "3@Team";
 	public static final String GEIGER = "Paneles";
 	public static final String PETTIT = "PerryLap";
+	public static final String RAFOTA = "Rafota";
 	public static final String TALLAC = "Torri";
 	public static final String TALLAC_PLUS = "Torri+";
 	public static final String ECLIPSE = "Arroyo";
@@ -32,11 +33,12 @@ public class WorkoutFactory {
 	public static final String STROMLO = "Diramno";
 	public static final String STROMLO_PLUS = "Diramno+";
 	public static final String PALISADE = "Overunder";
-	public static final String BUDAWANG = "TresArroyos";
+	public static final String BUDAWANG = "Tres Arroyos";
 	public static final String RAMP_TEST = "Test";
 	public static final String CHIRRI = "Chirri";
 	public static final String MCADIE = "Cuervo";
-
+	public static final String DONQUIJOTE = "Don Quijote";
+	public static final String ESPIRAL = "Espiral";
 	public static final String PICKETWARD = "Suffery";
 	public static final String BAYS = "Pergo";
 
@@ -62,7 +64,7 @@ public class WorkoutFactory {
 		mMap.put(RAMP_TEST, buildRampTest(RAMP_TEST));
 
 		mMap.put(TEMPO, buildTempo(TEMPO, 3, 15 * 60, 3 * 60, 75, 90));
-		mMap.put(ANVIL, buildTempo(ANVIL, 4, 15 * 60, 4 * 60, 75, 94));
+		mMap.put(ANVIL, buildTempo(ANVIL, 4, 16 * 60, 5 * 60, 75, 94));
 		mMap.put(TEMPO1, buildTempo(TEMPO1, 4, 12 * 60, 2 * 60, 75, 90));
 		mMap.put(WRIGHT_PEAK, divide(new Workout(WRIGHT_PEAK, 3, 30 * 60, 5 * 60, 85), 30 * 60, 2, 1 * 60));
 
@@ -72,7 +74,7 @@ public class WorkoutFactory {
 		mMap.put(INDIO, buildLowRecovery(INDIO, 3, 26 * 60, 8 * 60, 87, 73, 60));
 
 		mMap.put(HUNTER, buildLowRecovery(HUNTER, 6, 10 * 60, 4 * 60, 88, 92, 65));
-		mMap.put(TALLAC, new Workout(TALLAC, 3, 15 * 60, 3 * 60, 88, 94));
+		mMap.put(TALLAC, new Workout(TALLAC, 3, 15 * 60, 5 * 60, 88, 94));
 		mMap.put(TALLAC_PLUS, new Workout(TALLAC_PLUS, 4, 15 * 60, 7 * 60, 88, 94));
 		mMap.put(ECLIPSE, new Workout(ECLIPSE, 3, 20 * 60, 3 * 60, 88, 94));
 		mMap.put(ECLIPSE_PLUS, new Workout(ECLIPSE_PLUS, 4, 20 * 60, 3 * 60, 88, 94));
@@ -80,6 +82,7 @@ public class WorkoutFactory {
 		mMap.put(SIXERS, new Workout(SIXERS, 6, 10 * 60, 2 * 60, 86, 94));
 		mMap.put(GEIGER, new Workout(GEIGER, 3, 12 * 60, 3 * 60, 88, 91));
 		mMap.put(PETTIT, buildEndurance(PETTIT, 60));
+		mMap.put(RAFOTA, buildEndurance(RAFOTA, 90, 20, true));
 		mMap.put(ANTELOPE_PLUS, new Workout(ANTELOPE_PLUS, 5, 10 * 60, 6 * 60, 94, 94));
 		mMap.put(ANTELOPE, new Workout(ANTELOPE, 5, 10 * 60, 5 * 60, 88, 94));
 
@@ -107,11 +110,46 @@ public class WorkoutFactory {
 		mMap.put(STROMLO_PLUS, buildStromlo(STROMLO_PLUS, 6, 8 * 60, 5 * 60, 102, 102, 20 * 60, 75));
 		mMap.put(BUDAWANG, buildStromlo(BUDAWANG, 4, 9 * 60, 5 * 60, 102, 102, 40 * 60, 75));
 
-		mMap.put(MACDUFFIE, buildSprints(MACDUFFIE, 5, 4 * 60, 5 * 60, 105, 200, 3, 45, 15));
+		mMap.put(MACDUFFIE, buildSprints(MACDUFFIE, 5, 4 * 60, 5 * 60, 105, 200, 3, 45, 15, false));
+		mMap.put(DONQUIJOTE, buildSprints(DONQUIJOTE, 5, 3 * 60, 6 * 60, 100, 120, 5, 30, 60, true));
+		
+		mMap.put(ESPIRAL, buildSpiral(ESPIRAL, 7, 7, 3*60, 100, 120, 5*60));
 
 	}
 
-	private Workout buildThreshold(String name, int series, int repeats, int duration, int repeatsRecovery, int power,
+	private Workout buildSpiral(String name, int series, int repeats, int baseDuration, int basePower, int raisePower, int recovery) {
+		Workout wo = new Workout();
+		wo.setName(name);
+		wo.setWarn(Workout.getWarn(raisePower));
+		wo.setCold(Workout.defaultCold);
+		
+		int duration = 0;
+		
+		for (int i=0; i< series; i++) {
+			
+			duration = baseDuration;
+			
+			for (int j=0; j< repeats; i++) {
+				wo.addStep(new Step(raisePower, duration, duration));
+				duration = duration / 2;
+			}
+			
+			if (i<series-1)
+				wo.addStep(new Step(Workout.DEFAULT_RECOVERY, 0,recovery));
+			else {
+				wo.addStep(new Step(raisePower, duration, duration));
+				wo.addStep(new Step(raisePower, duration, duration));
+				wo.addStep(new Step(raisePower, 0, duration));
+						
+			}
+			
+		}
+		
+		
+		return wo;
+	}
+
+	public Workout buildThreshold(String name, int series, int repeats, int duration, int repeatsRecovery, int power,
 			int raisePower, int seriesRecovery, int endurancPower, int enduranceDuration) {
 
 		Workout wo = new Workout();
@@ -181,10 +219,10 @@ public class WorkoutFactory {
 	}
 
 	public Workout buildSprints(String name, int intervals, int duration, int recovery, int power, int sprintPower,
-			int sprints, int recoverySprints, int sprintDuration) {
+			int sprints, int recoverySprints, int sprintDuration, boolean reverse) {
 
 		Workout wo = new Workout(name, intervals, duration, recovery, power, power);
-
+		wo.setWarn(Workout.thresholdWarn);
 		// justo antes de cada intervalo normal meto una serie de intervalos de sprint
 		ArrayList<Step> steps = new ArrayList<Step>();
 
@@ -193,11 +231,25 @@ public class WorkoutFactory {
 			// en cada intervalo de la sesión princpial meto un surge antes después
 			if (step.getPower() == power) {
 
-				for (int i = 1; i <= sprints; i++) {
-					steps.add(new Step(sprintPower, recoverySprints, sprintDuration));
+				if (reverse) {
+					int recoveryTime = step.getRecoveryTime();
+					int recoveryPower = step.getRecoveryPower();
+					step.setRecoveryTime(0);
+					steps.add(step);
+					
+					for (int i = 1; i <= sprints; i++) {
+						steps.add(new Step(sprintPower, recoverySprints, sprintDuration));
+					}
+					steps.add(new Step(recoveryPower, 0, recoveryTime));
+					
 				}
-
-				steps.add(step);
+				else {
+					for (int i = 1; i <= sprints; i++) {
+						steps.add(new Step(sprintPower, recoverySprints, sprintDuration));
+					}
+	
+					steps.add(step);
+				}
 			} else
 				steps.add(step);
 		}
@@ -357,6 +409,10 @@ public class WorkoutFactory {
 	}
 
 	private Workout buildEndurance(String name, int duration) {
+		return buildEndurance(name,duration, 0, false);
+	}
+	
+	public Workout buildEndurance(String name, int duration, int surgeDuration, boolean surges) {
 		Workout endurance = new Workout();
 		endurance.setName(name);
 		Workout warn = new Workout();
@@ -365,14 +421,23 @@ public class WorkoutFactory {
 		endurance.setWarn(warn);
 		endurance.setCold(new Step(65, 40, 0, 5 * 60));
 		int timeSpent = 10;
+
+		int index = 0;
+
 		while (timeSpent < duration) {
 
 			int low = Double.valueOf(10 * Math.random()).intValue();
 			int hight = Double.valueOf(10 * Math.random()).intValue();
 
-			endurance.getSteps().add(new Step(59 + low, 76 - hight, 0, 5 * 60));
+			if (surges && index % 2 != 0) {
+				endurance.getSteps().add(new Step(59 + low, 76 - hight, 0, 5 * 60 - surgeDuration));
+				endurance.getSteps().add(new Step(Double.valueOf(80 + 55 * Math.random()).intValue(), 0, surgeDuration));
+			} else
+				endurance.getSteps().add(new Step(59 + low, 76 - hight, 0, 5 * 60));
 
 			timeSpent += 5;
+
+			index++;
 		}
 
 		return endurance;
